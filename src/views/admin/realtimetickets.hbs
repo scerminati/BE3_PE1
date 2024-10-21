@@ -1,0 +1,87 @@
+<div>
+  <h1>Realtime Dashboard</h1>
+  <p>Vista de Administrador.</p>
+  <br />
+  <div id="orderDetails" style=" margin-top: 20px; display:none">
+    <h3 id="detalle">Detalles del Pedido {{ticket.code}}</h3><br />
+    <p id="codigo">
+      <strong>Código:</strong>
+      {{ticket.code}}
+    </p>
+    <p id="usuario"><strong>Usuario:</strong> {{ticket.user.email}}</p>
+    <p id="fecha">
+      <strong>Fecha de Pedido:</strong>
+      {{ticket.readableDate}}
+    </p>
+
+    <br />
+    <p><strong>Detalle de Productos</strong></p>
+    <table class="tableticket">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th class="center">Cantidad</th>
+          <th>Precio</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+        {{#each ticket.products}}
+          <tr>
+            <td>{{this.title}}</td>
+            <td class="center">{{this.quantity}}</td>
+            <td>${{this.price}}</td>
+            <td>${{this.totalProduct}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <br />
+    <p id="total">
+      <strong>Total:</strong>
+      ${{ticket.amount}}
+    </p>
+    <br />
+    <p id="estado"><strong>Estado:</strong> {{ticket.status}}</p>
+    <label for="statusSelect"><strong>Cambiar estado:</strong></label>
+    <select id="statusSelect">
+      <option value="pending">Pendiente</option>
+      <option value="processing">Procesando</option>
+      <option value="delayed">Atrasado</option>
+      <option value="delivered">Enviado</option>
+      <option value="canceled">Cancelado</option>
+    </select>
+    <button id="updateStatusButton" data-ticket-id="{{ticket._id}}">Actualizar
+      Estado</button>
+  </div>
+  <div class="center"><button id="cancelOp">Cancelar Operacion</button>
+    <a href="/"><button>Volver al inicio</button></a>
+  </div>
+  <br />
+  <div id="listTickets">
+    <h2>Listado de Pedidos</h2>
+    <div class="listado">
+      <div id="listado">
+        {{#each tickets}}
+          <div id="{{this._id}}" class="productoBox">
+            <p class="flex2u">Código: {{this.code}}</p>
+            <p class="flex5u">Usuario: {{this.user.email}}</p>
+            <p class="flex2u">Fecha de Pedido: {{this.readableDate}}</p>
+            <p class="flex3u">Total: ${{this.amount}}</p>
+            <p class="flex6u">Estado: {{this.status}}</p>
+
+            <button
+              type="button"
+              class="btn-ticket flex6u"
+              data-ticket-id="{{this._id}}"
+            >Administrar Pedido</button>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realtimetickets.js"></script>

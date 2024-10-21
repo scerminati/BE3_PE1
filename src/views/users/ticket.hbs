@@ -1,0 +1,48 @@
+<h1>Pedido número {{ticket.code}}</h1>
+<p>
+  <strong>Código:</strong>
+  {{ticket.code}}
+</p><br />
+<p><strong>Usuario:</strong> {{ticket.user.email}}</p>
+<br />
+<p>
+  <strong>Fecha de Pedido:</strong>
+  {{ticket.readableDate}}
+</p>
+<br />
+<p><strong>Estado:</strong> {{ticket.status}}</p>
+<br />
+<p><strong>Detalle de Productos</strong></p>
+<table class="tableticket">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th class="center">Cantidad</th>
+      <th>Precio</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each ticket.products}}
+      <tr>
+        <td>{{this.title}}</td>
+        <td class="center">{{this.quantity}}</td>
+        <td>${{this.price}}</td>
+        <td>${{this.totalProduct}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<br />
+<p>
+  <strong>Total:</strong>
+  ${{ticket.amount}}
+</p>
+<div class="center">
+  <a href="/profile">
+    <button>Volver al perfil</button>
+  </a>
+  <a href="/">
+    <button>Volver a la tienda</button>
+  </a>
+</div>

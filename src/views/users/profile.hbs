@@ -1,0 +1,52 @@
+<h1>Perfil del usuario</h1>
+
+<p>Nombre: {{user.first_name}} {{user.last_name}}</p>
+<p>Email: {{user.email}}</p>
+<p>Edad: {{user.age}}</p>
+<form action="/api/sessions/logout" method="POST">
+  <div class="center">
+    <a href="/"><button type="button">Ir a la página principal</button></a>
+    <button type="submit">Cerrar Sesión</button>
+  </div>
+</form>
+
+{{#if (eq user.role "admin")}}
+  <br /><hr /><br />
+  <h3>Opciones de Administrador</h3>
+  <div class="center">
+    <a href="/realtimeproducts">
+      <button>Administrar Productos</button>
+    </a>
+    <a href="/realtimeusers">
+      <button>Administrar Usuarios</button>
+    </a>
+    <a href="/realtimetickets">
+      <button>Administrar Pedidos</button>
+    </a>
+  </div>
+{{/if}}
+
+{{#if user.tickets}}
+  <br /><hr /><br />
+  <h3>Compras Anteriores</h3>
+  {{#each user.tickets}}<div id="{{this._id}}" class="productoBox">
+      <p class="flex2u">
+        Código:
+        {{this.code}}
+      </p>
+      <p class="flex2u">
+        Total: ${{this.amount}}
+      </p>
+      <p class="flex1u">
+        Fecha de Pedido:
+        {{this.readableDate}}
+      </p>
+      <p class="flex2u">Estado: {{this.status}}</p><a
+        href="/tickets/{{this._id}}"
+      ><button
+          type="button"
+          class="btn-user flex6u"
+          data-user-id="{{this._id}}"
+        >Ver Pedido</button></a>
+    </div>
+  {{/each}}{{/if}}

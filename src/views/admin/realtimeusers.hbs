@@ -1,0 +1,48 @@
+<div>
+  <h1>Realtime Dashboard</h1>
+  <p>Vista de Administrador.</p>
+  <br />
+  <div class="center">
+    <a href="/"><button>Volver al inicio</button></a></div>
+  <br />
+  <div id="listProd"><h2>Listado de Usuarios</h2>
+    <div class="listado"><div id="listado">
+        {{#each usersMod}}
+          <div id="{{this._id}}" class="productoBox">
+            <p class="flex1u">Email: {{this.email}}</p>
+            <p class="flex2u">
+              Nombre:
+              {{this.first_name}}
+            </p>
+            <p class="flex2u">
+              Apellido:
+              {{this.last_name}}
+            </p>
+            <p class="flex3u">
+              Edad:
+              {{this.age}}
+            </p>
+            <p class="flex3u">Rol: {{this.role}}</p>
+
+            {{#if (eq this.role "logged")}}
+              <button class="invisible"></button>
+            {{else if (eq this.role "admin")}}
+              <button
+                type="button"
+                class="btn-user flex4u"
+                data-user-id="{{this._id}}"
+              >Hacer Usuario</button>
+            {{else}}
+              <button
+                type="button"
+                class="btn-admin flex4u"
+                data-user-id="{{this._id}}"
+              >Hacer Admin</button>
+            {{/if}}
+          </div>
+        {{/each}}
+      </div></div></div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realtimeusers.js"></script>

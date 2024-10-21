@@ -1,6 +1,6 @@
-# Backend II - Proyecto Final - Sofía Cerminati
+# Backend III - PreEntrega 1 - Sofía Cerminati
 
-Este proyecto es la programación del Backend del E-Commerce So-Games, para juegos de mesa, junto con la implementación de su FrontEnd. El mismo se realiza como finalización del curso Programación Backend II: Diseño y Arquitectura Backend de CODERHOUSE, comisión 70070, con el profesor Omar Jesús Maniás.
+Este proyecto es la programación del Backend del E-Commerce So-Games, para juegos de mesa, junto con la implementación de su FrontEnd. El mismo se realiza como finalización del curso Programación Backend III: Testing y Escalabilidad Backend de CODERHOUSE, comisión 70070, con el profesor Omar Jesús Maniás.
 
 ## Tabla de Contenidos
 
@@ -439,4 +439,3 @@ Este proyecto utiliza las siguientes tecnologías y bibliotecas:
   - Versión: `^9.0.2`
 - **[Nodemailer](https://nodemailer.com/)**: Biblioteca para enviar correos electrónicos desde Node.js.
   - Versión: `^6.9.15`
-# BE3_PE1
