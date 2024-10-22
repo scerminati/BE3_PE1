@@ -183,7 +183,7 @@ export const viewsProfileController = async (req, res, next) => {
   let user = req.user;
   let tickets = await getTicketFromUserService(idUser);
   if (tickets) {
-    user.tickets = tickets;
+    user.tickets = tickets.length ? tickets : [tickets];
   }
 
   res.render("users/profile", { user });
@@ -211,7 +211,7 @@ export const viewsTicketController = async (req, res, next) => {
 
   try {
     let ticket = await getTicketService(ticketId);
-  
+
     if (
       ticket.user._id.toString() != user._id.toString() &&
       user.role != "admin"

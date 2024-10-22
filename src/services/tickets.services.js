@@ -98,8 +98,8 @@ const generateUniqueTicketCode = async () => {
   return code;
 };
 
-const populateTicketService = async (cart) => {
-  let ticketsPopulate = await ticketService.populateTicket(cart);
+const populateTicketService = async (ticket) => {
+  let ticketsPopulate = await ticketService.populateTicket(ticket);
 
   if (!ticketsPopulate) {
     throw new InternalServerError("Error al popular el carrito");
