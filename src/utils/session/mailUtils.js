@@ -108,7 +108,7 @@ export async function emailBody(user, products, amount, code, future) {
     attachments: [
       {
         filename: "icono.png",
-        path: __dirname + "../../../public/images/icono.png",
+        path: __dirname + "/../../public/images/icono.png",
         cid: "icono",
       },
     ],
